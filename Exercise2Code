@@ -1,0 +1,46 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+class Dog: CustomStringConvertible {
+    let imie: String
+    let gatunek: String
+    let zdjecie: UIImage?
+    let wiek: Int
+    let waga: Float
+    
+    init (imie: String, gatunek: String, wiek: Int, zdjecie: UIImage?, waga: Float){
+        self.imie = imie
+        self.gatunek = gatunek
+        self.wiek = wiek
+        self.zdjecie = zdjecie
+        self.waga = waga
+    }
+    
+    var posiadaZdjecie : Bool {
+        return zdjecie != nil
+    }
+    
+    var description: String {
+        var description = ""
+        description += "\(self.imie) - "
+        description += "\(self.gatunek) - "
+        description += "\(self.wiek) - "
+        description += "\(self.waga) - "
+        if (self.zdjecie == nil){
+            description += " Nie posiada zdjęcia"
+        } else {
+            description += "Posiada zdjęcie"
+        }
+        
+        return description
+    }
+}
+extension Float {
+    func convertToKg() -> Float {
+        return self * 0.453
+    }
+}
+
+let dog = Dog(imie: "Nelson", gatunek: "Labrador", wiek: 7, zdjecie: nil, waga: 30)
+dog.waga.convertToKg()
